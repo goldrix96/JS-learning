@@ -124,3 +124,46 @@ img {
   width:400px;
    
 }
+
+.tableStyle{
+ 
+  margin-top: 50px;
+  font-family: arial, sans-serif;
+  /* border-collapse: collapse; */
+  width: 100%;
+  text-align: left;
+  }
+
+.tableStyle td{
+  font-size: 20px;
+  border: 1px solid black;
+
+}
+
+
+/* =========================== */
+
+:root{
+  --blur: 0px;
+  --base:#bada55;
+  --spacing:20px;
+}
+
+.container{
+  text-align: center;
+}
+
+label {
+  font-size: 20px;
+  margin: 30px;
+}
+
+.cityImage{
+  width:600px;
+  margin-top: 30px;
+  filter: blur(var(--blur));
+  padding: var(--spacing);
+  background: var(--base);
+
+}
+
