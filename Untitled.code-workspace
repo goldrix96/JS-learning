@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "/Users/tslocal/Documents/school/Clock"
+		},
+		{
+			"path": "/Users/tslocal/Documents/school/guessGame"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "JS-learning"
+	}
+}

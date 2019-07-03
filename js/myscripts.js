@@ -126,6 +126,7 @@ var yearFilter = inventors.filter(inventor => inventor.year>=1600 && inventor.ye
 var inventorsMap = inventors.map(inventor =>(`${inventor.first} ${inventor.last}`))
 // console.table(inventorsMap);
 
+//sort by year
 var sortFilte = inventors.sort((a,b) => a.year > b.year ? 1 : -1);
 // console.table(sortFilte);
 
@@ -133,21 +134,40 @@ var totalYear = inventors.reduce((a,b) => {
   return a + (b.passed - b.year)
 }, 0)
 
+
+//sort by age
 var sortYear = inventors.sort((a,b)=>{
   var guy1 = a.passed - a.year;
   var guy2 = b.passed - b.year;
   return guy1>guy2 ? -1 : 1
 
-})
+   
 
-function loadSource(url){
-  $.ajax({
-      url: "<URL containing the HTML>",
-  })
-  .done(function(html) {
-      $("#vid").append(html); // append the html to the element with the ID 'vid'
-  });
-}
+})
+//  console.table(sortYear);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var summ = inventors.sort(a=>
+    a.passed - a.year 
+    
+    )
+
+console.table(summ);
+
+
 
 // console.log(totalYear);
 // console.table(sortYear);
@@ -167,7 +187,7 @@ const alpfa = people.sort((a,b) => {
   return alast > blast ? 1 : -1;
 
 });
-console.log(alpfa);
+// console.log(alpfa);
 
 
 
