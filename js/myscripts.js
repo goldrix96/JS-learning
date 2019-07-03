@@ -1,10 +1,4 @@
-
-
-
-
-
-
-
+//Object Array + Map+Filter
 var itemName = [['book', 'table', 'bad', 'bag'],
                 [5, 7, 56, 35],
                 ['lamps', 'blanket', 'soup']
@@ -32,6 +26,7 @@ let displayUsers = filterUsers;
 // let content = displayUsers.map(item => `<p>${item4.firstName}</p>`);
 
 let tableMarkup = `
+<h1 style="text-align:center;">Object Array + Map+Filter</h1>
 <table class="tableStyle">
   <tr>
     <th>First name</th>
@@ -50,11 +45,13 @@ let tableMarkup = `
  </table>
 `
 
-// textContent.innerHTML = tableMarkup;
 
 
 
 
+
+
+//CSS variables update
 
 var excercise = `
 <div class = "container">  
@@ -76,16 +73,11 @@ var excercise = `
 </div>
 
 `
-
 textContent.innerHTML = tableMarkup + excercise;
 
-
-//change blur and position
+    //change blur and position
 var triggers = document.querySelectorAll('input');
 
-
-// triggerBlur.addEventListener('change', changeBlur);
-// triggerBlur.addEventListener('mousemove', changeBlur);
 triggers.forEach (trigger => trigger.addEventListener('change', handleUpdate));
 triggers.forEach (trigger => trigger.addEventListener('mousemove', handleUpdate));
 
@@ -93,19 +85,9 @@ function handleUpdate(){
   var suffix = this.dataset.sizing || '';
   document.documentElement.style.setProperty(`--${this.name}`, this.value+suffix);
   
-  
   console.log(this.name);
-  
-  // var suffix = this.dataset.sizing
-  // var blurValue = this.input.name;
-  
-  // document.documentElement.style.setProperty('--blur', blurValue+suffix);
-  
-
 }
-
-
-//color
+    //color
 var colorChange = document.querySelector('.colorChange')
 colorChange.addEventListener('change', color);
 
@@ -114,6 +96,85 @@ function color(){
   document.documentElement.style.setProperty(`--base`, colorValue);
   console.log(colorValue);
 }
+
+
+//Array cardio
+
+const inventors = [
+  { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+  { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+  { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+  { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+  { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+  { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+  { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+  { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
+  { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+  { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+  { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+  { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+];
+const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+
+const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+
+
+var yearFilter = inventors.filter(inventor => inventor.year>=1600 && inventor.year <= 1850)
+// console.table(yearFilter);
+
+var inventorsMap = inventors.map(inventor =>(`${inventor.first} ${inventor.last}`))
+// console.table(inventorsMap);
+
+var sortFilte = inventors.sort((a,b) => a.year > b.year ? 1 : -1);
+// console.table(sortFilte);
+
+var totalYear = inventors.reduce((a,b) => {
+  return a + (b.passed - b.year)
+}, 0)
+
+var sortYear = inventors.sort((a,b)=>{
+  var guy1 = a.passed - a.year;
+  var guy2 = b.passed - b.year;
+  return guy1>guy2 ? -1 : 1
+
+})
+
+function loadSource(url){
+  $.ajax({
+      url: "<URL containing the HTML>",
+  })
+  .done(function(html) {
+      $("#vid").append(html); // append the html to the element with the ID 'vid'
+  });
+}
+
+// console.log(totalYear);
+// console.table(sortYear);
+
+ 
+//====SEARCH===//
+// const category = document.querySelector('.mw-category');
+    // const links = Array.from(category.querySelectorAll('a'));
+    // const de = links
+    //             .map(link => link.textContent)
+    //             .filter(streetName => streetName.includes('de'));
+
+
+const alpfa = people.sort((a,b) => {
+  const [afirst, alast] = a.split(',');
+  const [bfirst, blast] = b.split(',');
+  return alast > blast ? 1 : -1;
+
+});
+console.log(alpfa);
+
+
+
+
+
+
+
 
 
 
