@@ -98,6 +98,7 @@ function color(){
 }
 
 
+
 //Array cardio
 
 const inventors = [
@@ -144,33 +145,52 @@ var sortYear = inventors.sort((a,b)=>{
    
 
 })
-//  console.table(sortYear);
 
 
 
 
 
 
+var textWrap = document.querySelector('.textWrap')
+
+var textWrapValue = `
+<h1>Flexbox + JavaScript Image Gallery</h1>
+<div class="panels">
+    <div class="panel panel1">
+      <p>Hey</p>
+      <p>Let's</p>
+      <p>Dance</p>
+    </div>
+    <div class="panel panel2">
+      <p>Give</p>
+      <p>Take</p>
+      <p>Receive</p>
+    </div>
+    <div class="panel panel3">
+      <p>Experience</p>
+      <p>It</p>
+      <p>Today</p>
+    </div>
+    <div class="panel panel4">
+      <p>Give</p>
+      <p>All</p>
+      <p>You can</p>
+    </div>
+    <div class="panel panel5">
+      <p>Life</p>
+      <p>In</p>
+      <p>Motion</p>
+    </div>
+  </div>
+
+`;
+
+
+textWrap.innerHTML = textWrapValue;
 
 
 
 
-
-
-
-
-
-var summ = inventors.sort(a=>
-    a.passed - a.year 
-    
-    )
-
-console.table(summ);
-
-
-
-// console.log(totalYear);
-// console.table(sortYear);
 
  
 //====SEARCH===//
