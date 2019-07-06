@@ -146,10 +146,24 @@ var sortYear = inventors.sort((a,b)=>{
 
 })
 
+// const category = document.querySelector('.mw-category');
+    // const links = Array.from(category.querySelectorAll('a'));
+    // const de = links
+    //             .map(link => link.textContent)
+    //             .filter(streetName => streetName.includes('de'));
+
+
+    const alpfa = people.sort((a,b) => {
+      const [afirst, alast] = a.split(',');
+      const [bfirst, blast] = b.split(',');
+      return alast > blast ? 1 : -1;
+    
+    });
+    // console.log(alpfa);
 
 
 
-
+//IMAGE GALLERY
 
 var textWrap = document.querySelector('.textWrap')
 
@@ -190,24 +204,88 @@ textWrap.innerHTML = textWrapValue;
 
 
 
+var animation = document.querySelectorAll('.panel');
+
+animation.forEach(panel => panel.addEventListener('click', toggleWidth));
+animation.forEach(panel => panel.addEventListener('transitionend', toggleCaptions));
+
+function toggleWidth(){
+  this.classList.toggle('open');
+}
+
+function toggleCaptions(e){
+  if(e.propertyName.includes('flex')){
+    this.classList.toggle('open-active')
+  }
+}
+
+
 
 
  
-//====SEARCH===//
-// const category = document.querySelector('.mw-category');
-    // const links = Array.from(category.querySelectorAll('a'));
-    // const de = links
-    //             .map(link => link.textContent)
-    //             .filter(streetName => streetName.includes('de'));
 
 
-const alpfa = people.sort((a,b) => {
-  const [afirst, alast] = a.split(',');
-  const [bfirst, blast] = b.split(',');
-  return alast > blast ? 1 : -1;
+//Ajax Type Ahead with fetch()
 
-});
-// console.log(alpfa);
+var searchBar = document.querySelector('.searchBar');
+
+var searchMarkup = `
+    <h1 style="text-align:center;">Ajax Type Ahead with fetch()</h2>
+    <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+    </form>
+
+`
+searchBar.innerHTML = searchMarkup;
+
+
+
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+// const endpointIndia = 'https://raw.githubusercontent.com/nijeeshjoshy/All-Indian-Cities-JSON/master/allCities.json';
+
+const arrayData = [];
+fetch(endpoint).then(blob => blob.json()).then(data => arrayData.push(...data));
+
+function findMatches(arrayData, wordToMatch){
+  return arrayData.filter(match=>{
+    const regex = new RegExp(wordToMatch, 'gi');
+    return match.city.match(regex) || match.state.match(regex);
+  });
+}
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function displayMatches(){
+  const matches = findMatches(arrayData, this.value)
+  const html = matches.map(match => {
+    const regex = new RegExp(this.value, 'gi');
+    const cityName = match.city.replace(regex, `<span class="hl">${this.value}</span>`)
+    const stateName = match.city.replace(regex, `<span class="hl">${this.value}</span>`)
+    return `
+      <li>
+        <span class="name">${cityName}, ${stateName}</span>
+        <span>${numberWithCommas(match.population)}</span>
+      </li>
+    `;
+  })
+  suggestions.innerHTML = html;
+  console.log(matches);
+
+}
+  const search = document.querySelector('.search')
+  const suggestions = document.querySelector('.suggestions')
+  search.addEventListener('change', displayMatches)
+  search.addEventListener('keyup', displayMatches)
+
+
+
+
 
 
 
