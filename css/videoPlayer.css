@@ -27,6 +27,8 @@
     font-size: 0;
     overflow: hidden;
   }
+
+  
   
   /* This css is only applied when fullscreen is active. */
   .player:fullscreen {
